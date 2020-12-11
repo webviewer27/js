@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<h1 id="info"></h1>
+<h1 id="info2"></h1>
+<h1 id="bud"></h1>
+
+<div id="clock" style="width: 40vw; height:40vw; background-image: url(clock.png); background-size: contain; margin: 50px auto; position: relative;" >
+	
+	<img id="sek" style="width: 100%; z-index: 1; position: absolute;" src="sek.png">
+	<img id="min" style="width: 100%; position: absolute;" src="min.png">
+	<img id="hours" style="width: 100%; position: absolute;" src="hours.png">
+</div>
+
+<script>
+	
+	var hoursBud = prompt("Введите час срабативания");
+	var minBud = prompt("Введите минуту срабатывания");
+
+
+    function clock() {
+
+    var getTime =new  Date();
+	
+	var hoursMin = new Date().getTime();
+	var hours = getTime.getHours();
+
+	var min = getTime.getMinutes();
+
+	var sec = getTime.getSeconds();
+
+	var degSec = ((sec*6)-21);
+
+	var degMin = (min*6);
+
+	var degHours = (hours*30);
+
+
+
+	
+
+	document.getElementById('info').innerHTML="Текущее время "+hours+":"+min+":" +sec+"" ;
+
+	document.getElementById('info2').innerHTML="Текущее время canada "+(hours-10)+":"+min+":" +sec+"" ;
+	
+	document.getElementById('bud').innerHTML="Будильник выставлен на "+hoursBud+":"+minBud+"";
+	
+    document.getElementById('sek').style.transform="rotate("+degSec+"deg)";
+
+     document.getElementById('min').style.transform="rotate("+degMin+"deg)";
+
+     document.getElementById('hours').style.transform="rotate("+degHours+"deg)";
+
+if ((hours==hoursBud)&&(min==minBud)&&(sec==0)) {alert("Будильник сработал!!!")}
+}
+
+
+setInterval(clock, 1000);
+
+
+
+
+
+
+</script>
+</body>
+</html>
